@@ -21,6 +21,14 @@ namespace B {
     }
 }
 
+void func(int a){
+    cout << "void func(int a) 함수 호출" << endl;
+}
+
+void func(int a, int b){
+    cout << "void func(int a, int b) 함수 호출" << endl;
+}
+
 int main() {
 
 	//1강 기본적인 입출력 및 변수,타입 정의 방법 관련하여 정의
@@ -78,6 +86,10 @@ int main() {
     //네임스페이스란 관련있는 것끼리 모여있는 공간
     A::Add();
     B::Add();
+
+    //4강 함수오버로딩(function overloading)
+    func(4);
+	func(5, 6);
 
 	return 0;
 

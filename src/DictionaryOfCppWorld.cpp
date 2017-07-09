@@ -6,3 +6,8 @@
 //cout == console out meaning
 //cin == console in java의 Scanner System.in 이라 생각하면 편함
 //endl == end of line 의 약어 이 문구를 붙이면 enter가 쳐진다.
+//함수오버로딩(function overloading)
+//오버로딩의 특징
+//1.함수명이 같아야 함
+//2.매개변수의 수가 다르거나 아니면 그 매개변수의 수가 같고 자료형이 달라야만 한다.
+//3.함수의 반환형은 같아도 되고, 달라도 가능하다.

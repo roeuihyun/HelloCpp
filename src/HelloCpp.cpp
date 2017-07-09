@@ -6,10 +6,24 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 #include <iostream>
+// 기본적인 네임스페이스를 std standard를 사용하겠다는 뜻이다.
 using namespace std;
+
+namespace A {
+    void Add() {
+        printf("A의 Add() 함수 호출\n");
+    }
+}
+
+namespace B {
+    void Add() {
+        printf("B의 Add() 함수 호출\n");
+    }
+}
 
 int main() {
 
+	//1강 기본적인 입출력 및 변수,타입 정의 방법 관련하여 정의
 	//cout == console out meaning
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 
@@ -50,15 +64,21 @@ int main() {
         sum += i;
     }
 
+    // 2강 기본적인 Console의 입력과 출력
+
     cout << "합은 : " << sum << endl;
 
-    char name[10];
+//    char name[10];
+//    cin == console in java의 Scanner System.in 이라 생각하면 편함
+//    cout << "이름을 입력하시고 엔터를 치세요 : ";
+//    cin >> name;
+//    cout << "당신의 이름은 : " << name << " 입니다. "<< endl;
 
-    //cin == console in java의 Scanner System.in 이라 생각하면 편
-    cout << "이름을 입력하시고 엔터를 치세요 : ";
-    cin >> name;
+    //3강 네임스페이스(namespace)
+    //네임스페이스란 관련있는 것끼리 모여있는 공간
+    A::Add();
+    B::Add();
 
-    cout << "당신의 이름은 : " << name << " 입니다. "<< endl;
 	return 0;
 
 }

@@ -29,6 +29,55 @@ void func(int a, int b){
     cout << "void func(int a, int b) 함수 호출" << endl;
 }
 
+
+struct student {
+  int id;
+  char *name;
+  float percentage;
+
+  void Show() {
+	  cout << "student " << endl;
+	  cout << "아이디: " << id << endl;
+	  cout << "이름: " << name << endl;
+	  cout << "백분율: " << percentage << endl;
+  }
+//  void Show(); // 해당 함수가 구조체 내부에 소속되어 있다는것을 의미한다.
+}; // 구조체 뒤에 세미콜론이 와야함
+
+//이것도 가능하다. 함수가 복잡한 경우 다음과 같이 함수 정
+//void student::Show() {
+//    cout << "아이디: " << id << endl;
+//    cout << "이름: " << name << endl;
+//    cout << "백분율: " << percentage << endl;
+//}
+
+
+//접근제어자를 적용한  student2
+struct student2 {
+private:
+  int id;
+  char *name;
+  float percentage;
+public:
+  void Show();
+  void SetInfo(int _id, char * _name, float _percentage);
+}; // 구조체 뒤에 세미콜론이 와야함
+
+void student2::Show() {
+	cout << "student2 " << endl;
+	cout << "아이디: " << id << endl;
+	cout << "이름: " << name << endl;
+	cout << "백분율: " << percentage << endl;
+}
+
+void student2::SetInfo(int _id, char * _name, float _percentage)
+{
+    id = _id;
+    name = _name;
+    percentage = _percentage;
+}
+
+
 int main() {
 
 	//1강 기본적인 입출력 및 변수,타입 정의 방법 관련하여 정의
@@ -54,12 +103,10 @@ int main() {
     int *parr = arr;
 
     int i;
-    int *pi = &i;
 
 	cout << "arr : "<< arr << endl; // prints arr
 	cout << "parr : "<< parr << endl; // prints parr
 	cout << "i : "<< i << endl; // prints i
-	cout << "pi : "<< pi << endl; // prints pi
 
 	for(i=0;i<10;i++){
 		cout << i ;
@@ -91,6 +138,42 @@ int main() {
     func(4);
 	func(5, 6);
 
+	//5강 메모리할당 삭제(new,delete)
+	//new == 힙 영역에 메모리 공간을 할당할 수 있게 도와주는 함수
+	//delete == 함수 호출시 할당되었던 메모리 공간을 전부 해제할수 있게 도와주는 함수
+	int * ptr1 = new int; // 객체를 동적 할당합니다.
+	int * ptr2 = new int[10]; // 길이가 10인 객체의 배열을 동적 할당합니다.
+	delete ptr1; // 동적 할당된 객체를 소멸시킵니다.
+	delete []ptr2; // 동적 할당된 객체의 배열을 소멸시킵니다.
+	//주의할점 : 동적 할당된 객체의 배열을 소멸시킬때는 반드시 4행처럼 작성해야 함, 만약에 3행과 같이 소멸시키신다면, 메모리 누수가 발생한다.
+
+//    int StudentNum, TotalScore=0;
+//    int * StudentScore;
+//    i = 0;
+//
+//    cout << "학생 수를 입력하세요: ";
+//    cin >> StudentNum;
+//    StudentScore=new int[StudentNum];
+//
+//    for(i=0; i<StudentNum; i++) {
+//     cout << i+1 << "번 학생의 점수: ";
+//     cin >> StudentScore[i];
+//     TotalScore+=StudentScore[i];
+//    }
+//
+//    cout << "모든 학생의 평균: " << TotalScore/StudentNum << endl;
+//    delete []StudentScore;
+
+	//6강 구조체의 확장
+	//맨 위쪽에 보면 구조체를 네임스페이스 함수 안에 정의한 것을 볼 수 있다.
+    student s={1, "김철수", 90.5};
+    s.Show();
+
+    student2 s2;
+    s2.SetInfo(2, "안철수", 100);
+//    s2.id = 10; //id가 private로 설정되어 있기 때문에 직접 변경하려고 하면 에러가 발생한다.
+//    에러내용 : declared private here
+    s2.Show();
 	return 0;
 
 }
